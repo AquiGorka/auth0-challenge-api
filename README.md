@@ -38,5 +38,5 @@ Don't forget to include your own webtask token
 
 ### Side Notes
 
-- Alejo's code & structure rock big time, it was insanly easy to follow his line of thought.
-- For a very much simpler version of the server take a look at the 'simple' branch
+- Alejo's code & structure rock big time, it was insanely easy to follow his line of thought.
+- For a very much simpler version of the server take a look at the 'simple' branch.
