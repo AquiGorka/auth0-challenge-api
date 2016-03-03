@@ -1,14 +1,15 @@
 var express = require('express'),
 	http = require('http'),
 	cors = require('cors')
-	jwt = require('express-jwt');
+	jwt = require('express-jwt')
+	config = require('../config/webtask.config.js')();
 
 var port = process.argv[2] || process.env.PORT || 8080,
 	app = express(),
 	api = require('./api.js'),
 	jwtCheck = jwt({
-		secret: new Buffer('', 'base64'),
-		audience: ''
+		secret: new Buffer(config.secret.secret, 'base64'),
+		audience: config.secret.audience
 	});
 
 // general middlewares
