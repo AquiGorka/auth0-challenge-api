@@ -1,26 +1,14 @@
 var express = require('express'),
-	http = require('http'),
-	cors = require('cors')
-	jwt = require('express-jwt')
-	config = require('../config/webtask.config.js')();
+	http = require('http')
+  cors = require('cors');
 
 var port = process.argv[2] || process.env.PORT || 8080,
 	app = express(),
-	api = require('./api.js'),
-	jwtCheck = jwt({
-		secret: new Buffer(config.secret.secret, 'base64'),
-		audience: config.secret.audience
-	});
+	api = require('./api.js');
 
-// general middlewares
-app.use(cors());
-app.use(jwtCheck, function (err, req, res, next) {
-	if (err && err.name === 'UnauthorizedError') {
-		return res.status(401).send(err.message);
-	}
-	next();
-});
 
+// local middlewares
+api.use(cors());
 
 // api routes
 app.use('/', api());
